@@ -11,4 +11,5 @@ Główne etapy są :
 2. Tworzenie funkcji do policzenia odległości euklidesowej i mały test jej działania
 3. Tworzenie głównej funkcji KNN gdzie jest policzone tą odległością z wszystkimi punktami, sortowane od dalszego do bliższego punktu, a w końcu klasyfikacja nasegoo punktu według które punkty z której klasy się bardziej powtarza
 4. Następnie jest wykres accuracy według k. Z tego można znaleść optymalną wartość k aby zrobić klasyfikacja.
+5. Z tego wynika że optymalna wartość k jest 5, a to znaczy, że 
 
