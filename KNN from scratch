@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 
 from scipy.stats import mode
 
-dataset = pd.read_csv('C:/Users/ferna/PycharmProjects/Project_Python_OD_FL/iphone_purchase_records.csv')
+dataset = pd.read_csv('C:/Users/ferna/PycharmProjects/Project_Python_OD_FL/gamingset_purchase_records.csv')
 dataset.head()
 
 dataset = dataset.drop('Gender', axis=1)
