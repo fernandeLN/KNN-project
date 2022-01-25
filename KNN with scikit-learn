@@ -1,0 +1,58 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+from scipy.stats import mode
+
+dataset = pd.read_csv('C:/Users/ferna/PycharmProjects/Project_Python_OD_FL/iphone_purchase_records.csv')
+dataset.head()
+
+dataset = dataset.drop('Gender', axis=1)
+dataset.head()
+
+X = dataset.drop('Purchase Iphone', axis=1)
+y = dataset['Purchase Iphone']
+
+X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = .3, random_state= 42)
+
+
+from scipy.stats import mode
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn import metrics
+k_range = range (1,15)
+scores= {}
+scores_list = []
+for k in k_range:
+    knn = KNeighborsClassifier(n_neighbors=k)
+    knn.fit (X_train, y_train)
+    y_pred = knn.predict(X_test)
+    scores[k] = metrics.accuracy_score(y_test, y_pred)
+    scores_list.append(metrics.accuracy_score(y_test, y_pred))
+
+
+plt.plot(k_range, scores_list, color='blue', marker='x', linestyle='dashed')
+plt.xlabel('Value of K for KNN')
+plt.ylabel('testing accuracy')
+plt.show()
+
+knn1 = KNeighborsClassifier(n_neighbors=5)
+knn1.fit(X,y)
+#classes = {0: 'did not bought it', 1 : 'bougth it'}
+
+X_new =[[80, 45], [0, 150000]]
+y_predictions = knn1.predict(X_new)
+
+if (y_predictions[1] == 0):
+    print ("did not ")
+else:
+    print ("bougth")
+
+if (y_predictions[0] == 0):
+    print ("did not ")
+else:
+    print ("bougth")
+
+
+
